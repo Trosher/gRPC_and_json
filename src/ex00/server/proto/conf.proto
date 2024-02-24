@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+service genShipServer {
+   rpc getShip(cord) returns (stream allShip) {}
+}
+
+message cord {
+  float num0 = 1;
+  float num1 = 2;
+  float num2 = 3;
+  float num3 = 4;
+  float num4 = 5;
+  float num5 = 6;
+}
+
+enum eClass {
+	Corvette = 0;
+	Frigate = 1;
+	Cruiser = 2;
+	Destroyer = 3;
+	Carrier = 4;
+	Dreadnought = 5;
+}
+
+enum eAlignment {
+	Ally = 0;
+	Enemy = 1;	
+}
+
+message Person {
+  string first_name = 1;
+  string last_name = 2;
+  string rank = 3;
+}
+
+message allShip {
+  eAlignment alignment = 1;
+  string name = 2;
+  eClass clas = 3;
+  float length = 4;
+  int64 crewSize = 5;
+  bool armed = 6;
+  repeated Person officers = 7;
+}
